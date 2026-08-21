@@ -13,9 +13,9 @@ Expected message value (JSON, UTF-8), one message per transaction:
 
     {"idempotency_key": "string", "entries": [{"account_id": "string", "amount_cents": <int64>}]}
 
-Note: ledger-service does not publish to Kafka yet (that wiring hasn't been
-built on the Go side), so there is no live producer as of this writing.
-This consumer is tested by hand-producing sample messages with
+ledger-service now publishes to this topic for real (see its
+internal/kafka.Producer) after every successfully applied transaction.
+This consumer can still be tested by hand-producing sample messages with
 `rpk topic produce transactions` — see BEST_PRACTICES.md for the exact
 commands.
 """
